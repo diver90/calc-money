@@ -5,6 +5,7 @@ function Operation (){
     const [amount, setAmount] = useState();
     const [description, setDescription] = useState();
     const transactionsContext = useContext(TransactionContext);
+    const firebase = transactionsContext.firebase;
 
     const onAddTransaction = (add) =>
     {
@@ -14,6 +15,7 @@ function Operation (){
             description: description,
             add
         }
+        firebase.addTransaction(transData);
         let transactions = [...transactionsContext.transactions];
         transactions.push(transData);
         transactionsContext.setTransactions(transactions);

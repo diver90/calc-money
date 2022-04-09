@@ -12,11 +12,9 @@ function Total() {
     useEffect(() => {
         let toIncome = 0;
         let toOutcome = 0;
-        transactions.forEach(({add, amount}) => {
+        Object.values(transactions).forEach(({add, amount}) => {
             add ? toIncome += amount : toOutcome += amount;
         });
-
-        localStorage.setItem('calcMoney', JSON.stringify(transactions));
 
         if(toIncome >= 0) setIncome(toIncome);
         if(toOutcome >= 0) setOutcome(toOutcome);

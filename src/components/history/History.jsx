@@ -11,7 +11,8 @@ const transactionsContext = useContext(TransactionContext);
             <h3>История расходов</h3>
             <ul className="history__list">
                 {
-                    transactionsContext.transactions.map((transaction) => <HistoryItem key={transaction.id} {...transaction} />)
+                    Object.entries(transactionsContext.transactions)
+                        .map(([keyVal, transaction]) => <HistoryItem key={keyVal} keyId={keyVal} { ...transaction} />)
                 }
             </ul>
         </section>
